@@ -2,8 +2,7 @@ import sys
 from random import randint
 
 
-if __name__ == "__main__":
-    input_sentence_len = int(sys.argv[1])
+def random_sentence(sentence_length):
     chosen_words = []
 
     with open('/usr/share/dict/words', 'r') as f:
@@ -13,3 +12,8 @@ if __name__ == "__main__":
             chosen_words.append(dict_words[rand_num].replace('\n', ''))
 
     print(' '.join(chosen_words))
+
+
+if __name__ == "__main__":
+    input_sentence_len = int(sys.argv[1])
+    random_sentence(input_sentence_len)

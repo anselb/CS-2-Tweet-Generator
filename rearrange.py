@@ -13,7 +13,8 @@ def rearange_words(input_words):
         new_word_order.append(input_words[rand_word_index])
         print(input_words[rand_word_index], end=" ")
         del input_words[rand_word_index]
-    # print('')
+
+    # Different way of joining words instead of
     # print(' '.join(new_word_order))
 
 
