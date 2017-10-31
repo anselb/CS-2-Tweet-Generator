@@ -30,6 +30,7 @@ def anagram_finder(original_word):
         print(broken_word)
         print(broken_anagram)
         if broken_anagram != broken_word:
+            print(word)
             anagram_words.remove(word)
 
     print(anagram_words)
