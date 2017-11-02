@@ -12,6 +12,7 @@ def clean(text_document):
     clean_text_document = clean_text_document.split(' ')
 
     for word in clean_text_document:
+        word = word.lower()
         if word == '':
             clean_text_document.remove(word)
 
@@ -54,10 +55,17 @@ def histogram_list_list(text_document):
     histo_list = []
     for word in transcript:
         in_list = False
-        for word_list_index in range(len(histo_list) - 1):
-            if word == histo_list[word_list_index][0]:
-                histo_list[word_list_index][1] += 1
+        # for word_list_index in range(len(histo_list) - 1):
+        #     if word == histo_list[word_list_index][0]:
+        #         histo_list[word_list_index][1] += 1
+        #         in_list = True
+        #         break
+        for entry in histo_list:
+            if entry[0] == word:
+                entry[1] += 1
                 in_list = True
+                break
+
         if not in_list:
             histo_list.append([word, 1])
 
@@ -84,6 +92,7 @@ def histogram_list_tuples(text_document):
                 del histo_list[word_tuple_index]
                 histo_list.append((word, tuple_num))
                 in_list = True
+
         if not in_list:
             histo_list.append((word, 1))
 
@@ -149,6 +158,6 @@ if __name__ == '__main__':
     # print(unique_words(histogram_dictionary('fish.txt')))
     # print(frequency('fish', histogram_dictionary('fish.txt')))
     # save_histo_to_file('fish_histo.txt', histogram_dictionary('fish.txt'))
-    histogram_list_list('fish.txt')
+    print(histogram_list_list('fish.txt'))
     # histogram_list_tuples('fish.txt')
     # histogram_list_counts('fish.txt')
