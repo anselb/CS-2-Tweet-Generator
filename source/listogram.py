@@ -20,19 +20,50 @@ class Listogram(list):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        self.tokens += count
+        in_list = False
+
+        for word_count_tuple in self:
+            if word_count_tuple[0] == word and not in_list:
+                tuple_num = word_count_tuple[1] + count
+                self.remove(word_count_tuple)
+                self.append((word, tuple_num))
+                in_list = True
+
+        if not in_list:
+            self.append((word, count))
+            self.types += 1
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
+        if self.__contains__(word):
+            return self[self._index(word)][1]
+        else:
+            return 0
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         # TODO: Check if word is in this histogram
+        in_histo = False
+
+        for word_count_tuple in self:
+            if word_count_tuple[0] == word:
+                in_histo = True
+
+        return in_histo
 
     def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
+        index = None
+
+        for word_count_index in range(len(self)):
+            if self[word_count_index][0] == target:
+                index = word_count_index
+
+        return index
 
 
 def print_histogram(word_list):
@@ -64,7 +95,8 @@ def main():
         woodchuck_text = ('how much wood would a wood chuck chuck'
                           ' if a wood chuck could chuck wood')
         print_histogram(woodchuck_text.split())
-
+        # test = Listogram(woodchuck_text.split())
+        # print(test._index('would'))
 
 if __name__ == '__main__':
     main()
