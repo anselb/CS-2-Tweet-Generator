@@ -50,6 +50,7 @@ class Listogram(list):
         for word_count_tuple in self:
             if word_count_tuple[0] == word:
                 in_histo = True
+                break
 
         return in_histo
 
@@ -62,6 +63,7 @@ class Listogram(list):
         for word_count_index in range(len(self)):
             if self[word_count_index][0] == target:
                 index = word_count_index
+                break
 
         return index
 

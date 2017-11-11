@@ -18,6 +18,20 @@ Be sure to complete these before next class session and before starting on the s
 - [Page 6: Application Architecture]
     - Improve code organization and quality based on peer feedback on code review rubric
     - Write down your answers to questions about application architecture to plan improvements
+        1. The key features include various histograms and their unique methods such as counting the types
+        and frequency of each type. The application should also sample words based on frequency and arrange
+        the words into sentences. Each feature is separated into their own files and split into functions.
+        Only the histograms were made into classes.
+        1. Yes, given that the project has to do with handling large bodies of text, I think that most, if
+        not all of the names are okay.
+        1. All variables are kept within their functions or classes. No global variables are present because
+        they are not needed.
+        1. All of the functions complete one action (or a few micro-actions that make up an action). All of the functions have no or minimal side effects as they do not modify variables out of their scope and
+        it is rare that a function will print output instead of returning a value.
+        1. The histograms are better in classes because each method shares types and tokens.
+        1. Files do have their own modules that can be run as modules and as scripts.
+        1. Most of the modules are able to be run independently. A couple of the histogram modules expect a
+        dictogram to be inputted rather than any histogram.
     - Implement `Dictogram` class (histogram as a subclass of `dict` type) using [dictogram starter code]:
         - Implement `add_count(word, count)` - increase the frequency count of `word` in the histogram by `count`
         - Implement `frequency(word)` - return the frequency count of `word` in the histogram, or `0` if not found
