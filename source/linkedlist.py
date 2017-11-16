@@ -90,7 +90,7 @@ class LinkedList(object):
             self.head = Node(item)
             self.tail = self.head
         elif self.tail == self.head:
-            self.tail = Node(item)
+            self.head = Node(item)
             self.head.next = self.tail
         else:
             old_first = self.head
@@ -107,7 +107,7 @@ class LinkedList(object):
         current_node = self.head
 
         if not self.is_empty():
-            while current_node is not self.tail:
+            while current_node is not None:
                 if quality(current_node.data) is True:
                     return current_node.data
                 current_node = current_node.next
