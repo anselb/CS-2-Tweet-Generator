@@ -31,8 +31,10 @@ def markov_sample(dictogram):
 def markov_chain(dictogram_dictionary):
     # start_word = randint
     sentence_array = ['one']
+    
     for word_index in range(10):
-        next_word = markov_sample(dictogram_dictionary[sentence_array[word_index]])
+        word_dictogram = dictogram_dictionary[sentence_array[word_index]]
+        next_word = markov_sample(word_dictogram)
         sentence_array.append(next_word)
 
     return ' '.join(sentence_array)
