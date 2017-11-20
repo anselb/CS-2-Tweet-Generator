@@ -60,6 +60,7 @@ class LinkedList(object):
         current_node = self.head
 
         if not self.is_empty():
+            # comments shoud say why
             while current_node is not None:
                 count += 1
                 current_node = current_node.next
@@ -71,15 +72,23 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
+        # if self.is_empty():
+        #     self.head = Node(item)
+        #     self.tail = self.head
+        # elif self.tail == self.head:
+        #     self.tail = Node(item)
+        #     self.head.next = self.tail
+        # else:
+        #     self.tail.next = Node(item)
+        #     self.tail = Node(item)
+
+        new_node = Node(item)
         if self.is_empty():
-            self.head = Node(item)
-            self.tail = self.head
-        elif self.tail == self.head:
-            self.tail = Node(item)
-            self.head.next = self.tail
+            self.head = new_node
         else:
-            self.tail.next = Node(item)
-            self.tail = Node(item)
+            self.tail.next = new_node
+        # In either case, the tail will be the new node
+        self.tail = new_node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -107,8 +116,8 @@ class LinkedList(object):
         current_node = self.head
 
         if not self.is_empty():
-            while current_node is not None:
-                if quality(current_node.data) is True:
+            while current_node:
+                if quality(current_node.data):
                     return current_node.data
                 current_node = current_node.next
 
@@ -125,20 +134,48 @@ class LinkedList(object):
         current_node = self.head
         deleted = False
 
-        while current_node is not None and current_node.data is item:
-            self.head = current_node.next
-            current_node = self.head
-            deleted = True
+        # while current_node is not None and current_node.data is item:
+        #     if self.head.next is None:
+        #         self.tail = None
+        #     self.head = current_node.next
+        #     current_node = self.head
+        #     deleted = True
+        #
+        # while current_node is not None and current_node.next is not None:
+        #     if current_node.next.data is item and current_node.next.next is None:
+        #         current_node.next = None
+        #         self.tail = current_node.next
+        #         deleted = True
+        #     else:
+        #         if current_node.next.data is item:
+        #             current_node.next = current_node.next.next
+        #             deleted = True
+        #     if self.head.next is None:
+        #         self.tail = self.head
+        #
+        #     current_node = current_node.next
 
-        while current_node is not None and current_node.next is not None:
-            if current_node.next.data is item and current_node.next.next is None:
-                current_node.next = None
-                self.tail = current_node.next
+        previous = None
+        while current_node is not None:
+            if current_node.data is item and current_node is self.head and current_node is self.tail:
+                self.head = None
+                self.tail = None
                 deleted = True
-            else:
-                if current_node.next.data is item:
-                    current_node.next = current_node.next.next
-                    deleted = True
+            elif current_node.data is item and current_node is self.head:
+                self.head = current_node.next
+                if self.head == self.tail:
+                    self.tail = current_node.next
+                deleted = True
+            elif current_node.data is item and current_node is self.tail:
+                self.tail = previous
+                self.tail.next = None
+                if self.head == self.tail:
+                    self.head = previous
+                deleted = True
+            elif current_node.data is item:
+                previous.next = current_node.next
+                deleted = True
+            previous = current_node
             current_node = current_node.next
 
         if not deleted:
