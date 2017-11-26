@@ -1,5 +1,6 @@
 import sys
 import time
+import random
 
 
 def anagram_finder(original_word):
@@ -36,10 +37,25 @@ def anagram_finder(original_word):
     print(anagram_words)
 
 
+def fake_anagram(word):
+    anagram_letters = [letter for letter in word]
+
+    fake_word = ""
+    for letter in range(len(anagram_letters)):
+        random_index = random.randint(0, len(anagram_letters) - 1)
+        fake_word += anagram_letters[random_index]
+        del anagram_letters[random_index]
+
+    print(fake_word)
+
+
 if __name__ == "__main__":
     input_word = sys.argv[1]
-    start = time.time()
-    anagram_finder(input_word)
-    finish = time.time()
-    print(finish - start)
-    print(['e', 'e', 'i', 'l', 'p', 'r', 's'] == ['e', 'i', 'l', 'p', 'p', 'r', 's'])
+
+    # start = time.time()
+    # anagram_finder(input_word)
+    # finish = time.time()
+    # print(finish - start)
+    # print(['e', 'e', 'i', 'l', 'p', 'r', 's'] == ['e', 'i', 'l', 'p', 'p', 'r', 's'])
+
+    fake_anagram(input_word)
