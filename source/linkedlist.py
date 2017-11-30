@@ -155,24 +155,25 @@ class LinkedList(object):
         #
         #     current_node = current_node.next
 
+        # NOTE: == is not the same as 'is'
         previous = None
         while current_node is not None:
-            if current_node.data is item and current_node is self.head and current_node is self.tail:
+            if current_node.data == item and current_node is self.head and current_node is self.tail:
                 self.head = None
                 self.tail = None
                 deleted = True
-            elif current_node.data is item and current_node is self.head:
+            elif current_node.data == item and current_node is self.head:
                 self.head = current_node.next
                 if self.head == self.tail:
                     self.tail = current_node.next
                 deleted = True
-            elif current_node.data is item and current_node is self.tail:
+            elif current_node.data == item and current_node is self.tail:
                 self.tail = previous
                 self.tail.next = None
                 if self.head == self.tail:
                     self.head = previous
                 deleted = True
-            elif current_node.data is item:
+            elif current_node.data == item:
                 previous.next = current_node.next
                 deleted = True
             previous = current_node
