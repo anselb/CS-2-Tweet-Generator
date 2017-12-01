@@ -61,6 +61,10 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
+
+        # could be done with 1 line with comprehension
+        # return sum(bucket.length() for bucket in self.buckets)
+
         total_entries = 0
 
         for linked_list in self.buckets:
@@ -105,17 +109,29 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
-        key_bucket = self._bucket_index(key)
+        # key bucket index
+        key_bucket = self._bucket_index(key)  # O(1) time
+        bucket = self.buckets[key_bucket]  # O(1) time
         in_hash_table = False
 
-        for key_value_tuple in self.buckets[key_bucket].items():
-            if key_value_tuple[0] is key:
+        # for key_value_tuple in bucket.items():
+        #     old_key, old_value = key_value_tuple
+        items = bucket.items()  # O(l) for l items in bucket (LL)
+        for old_key, old_value in items:  # O(l) iterations in worst case, O(1) beast case
+            if old_key is key:
                 in_hash_table = True
-                self.buckets[key_bucket].delete((key, key_value_tuple[1]))
-                self.buckets[key_bucket].append((key, value))
+                bucket.delete((key, old_value))  # O(l)
+                bucket.append((key, value))  # O(1)
 
-        if not in_hash_table:
-            self.buckets[key_bucket].append((key, value))
+        # O(l) in worst case because we iterate over all nodes if near tail or not found
+        key_value_pair = bucket.find(lambda key_value: key_value[0] == key)
+        if key_value_pair is not None:
+            bucket.delete(key_value_pair)  # O(l) time in worst case
+            bucket.append((key, value))  # O(1) time if using tail
+
+        # if not in_hash_table:
+        else:
+            bucket.append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
