@@ -170,25 +170,35 @@ class LinkedList(object):
 
         # NOTE: == is not the same as 'is'
         previous = None
+        # loop goes through all nodes
         while current_node is not None:
+            # first check is if node data matches and there is only one node
             if current_node.data == item and current_node is self.head and current_node is self.tail:
                 self.head = None
                 self.tail = None
                 deleted = True
+
+            # second check is if node data matches and node is head of linked list
             elif current_node.data == item and current_node is self.head:
                 self.head = current_node.next
                 if self.head == self.tail:
                     self.tail = current_node.next
                 deleted = True
+
+            # third check is if node matches and node is end of linked list
             elif current_node.data == item and current_node is self.tail:
                 self.tail = previous
                 self.tail.next = None
                 if self.head == self.tail:
                     self.head = previous
                 deleted = True
+
+            # last check is if node matches and is not at the start or end
             elif current_node.data == item:
                 previous.next = current_node.next
                 deleted = True
+
+            # save current node and move to next node
             previous = current_node
             current_node = current_node.next
 

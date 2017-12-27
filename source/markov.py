@@ -9,6 +9,11 @@ go through index in array and pull next word
 
 
 def markov_dictograms(text_string):
+    """
+    argument: a string of text
+    return: a dictionary of words and dictograms
+    """
+
     text_array = text_string.split()
     dictogram_dictionary = {}
 
@@ -25,6 +30,11 @@ def markov_dictograms(text_string):
 
 
 def nth_markov_dictograms(text_string, nth_order):
+    """
+    argument: a string of text and whatever order markov chain
+    return: a dictionary of word snippets and dictograms of single words that follow the snippets
+    """
+
     text_array = text_string.split()
     dictogram_dictionary = {}
 
@@ -41,11 +51,20 @@ def nth_markov_dictograms(text_string, nth_order):
 
 
 def markov_sample(dictogram):
+    """
+    argument: a dictogram of a specific key
+    return: a word that was sampled based on frequency
+    """
+
     return sample.weighted_dict_sampling(dictogram)
 
 
 def markov_chain(dictogram_dictionary):
-    # start_word = randint
+    """
+    argument: a dictionary of dictograms
+    return: a 10 word sentence string
+    """
+
     dictionary_keys = [key for key, value in dictogram_dictionary.items()]
     sentence_array = [dictionary_keys[randint(0, len(dictionary_keys) - 1)]]
 
@@ -58,7 +77,11 @@ def markov_chain(dictogram_dictionary):
 
 
 def nth_markov_chain(dictogram_dictionary):
-    # start_word = randint
+    """
+    argument: a dictionary of dictograms
+    return: a sentence string with a random length
+    """
+
     dictionary_keys = [key for key, value in dictogram_dictionary.items()]
     sentence_array = list(dictionary_keys[randint(0, len(dictionary_keys) - 1)])
 

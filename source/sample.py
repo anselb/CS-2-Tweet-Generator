@@ -5,6 +5,11 @@ from random import randint
 
 
 def random_sampling(histo):
+    """
+    argument: a histogram
+    return: a random word from the histogram (each word has same odds)
+    """
+
     num_of_words = len(histo)
     list_of_words = [word for word in histo]
     random_index = randint(0, num_of_words - 1)
@@ -12,6 +17,12 @@ def random_sampling(histo):
 
 
 def weighted_dict_sampling(dict_histo):
+    """
+    argument: a dictionary histogram
+    return: a words from the histogram that was sampled by frequency
+    (higher occurance = higer probability to be sampled)
+    """
+
     list_of_words = [word for word in dict_histo]
 
     total_tokens = 0
@@ -32,10 +43,17 @@ def weighted_dict_sampling(dict_histo):
 
 
 def weighted_list_tup_sampling(list_tup_histo):
+    # TODO: create function for sampling from a histogram of a list of tuples
     pass
 
 
 def random_check(word_list):
+    """
+    argument: a list of words
+    return: a histogram
+    histogram creation function meant to check if words look like they are correctly sampled
+    """
+
     random_word_histogram = {}
     for word in word_list:
         if word in random_word_histogram:

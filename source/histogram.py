@@ -21,8 +21,9 @@ def clean(text_document):
 
 def histogram_dictionary(text_document):
     """
-    inputs a text and returns a histogram data structure
+    inputs a text_file name
     returns histogram (each unique word and number of appearances)
+    histogram is a dictionary
     """
     transcript = ""
     with open(text_document, 'r') as f:
@@ -42,8 +43,10 @@ def histogram_dictionary(text_document):
 
 def histogram_list_list(text_document):
     """
-    inputs a text and returns a histogram data structure
+    inputs a text_file name
     returns histogram (each unique word and number of appearances)
+    histogram is a list of lists
+    list[0] is the key list[1] is the tokens
     """
     transcript = ""
     with open(text_document, 'r') as f:
@@ -74,8 +77,10 @@ def histogram_list_list(text_document):
 
 def histogram_list_tuples(text_document):
     """
-    inputs a text and returns a histogram data structure
+    inputs a text_file name
     returns histogram (each unique word and number of appearances)
+    histogram is a list of tuples
+    tuple[0] is the key tuple[1] is the tokens
     """
     transcript = ""
     with open(text_document, 'r') as f:
@@ -102,8 +107,9 @@ def histogram_list_tuples(text_document):
 
 def histogram_list_counts(text_document):
     """
-    inputs a text and returns a histogram data structure
+    inputs a text_file name
     returns histogram (each unique word and number of appearances)
+    TODO: complete function
     """
     transcript = ""
     with open(text_document, 'r') as f:
@@ -128,18 +134,25 @@ def histogram_list_counts(text_document):
 
 def unique_words(histogram):
     """
+    takes in a dictionary histogram
+    returns number of unique words
     """
     return(len(histogram))
 
 
 def frequency(word, histogram):
     """
+    takes in a word and a dictionary histogram
+    returns number of times the word appears
+    TODO: return error if word is not in dictionary
     """
     return histogram[word]
 
 
 def save_histo_to_file(file_name, histogram):
     """
+    arguments are a file name to save to and a dictionary histogram
+    creates a document named file_name
     """
     with open(file_name, 'w') as f:
         for word in histogram:
