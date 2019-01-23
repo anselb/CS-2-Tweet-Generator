@@ -1,0 +1,10 @@
+h1 {
+  color: rgb(204, 0, 0);
+  font-variant-caps: all-small-caps;
+  font-size: 46px;
+}
+
+body {
+  background: url("FalconHeavy.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
