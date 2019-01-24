@@ -90,7 +90,6 @@ instance/
 
 # Scraping stuff
 scraper/config.py
-scraper/corpus.txt
 
 # Scrapy stuff:
 .scrapy
