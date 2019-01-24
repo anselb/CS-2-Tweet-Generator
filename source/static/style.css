@@ -1,3 +1,8 @@
+@font-face {
+  font-family: teslaFont;
+  src: url(TeslaFont.ttf);
+}
+
 h1 {
   color: rgb(204, 0, 0);
   font-variant-caps: all-small-caps;
@@ -7,4 +12,30 @@ h1 {
 body {
   background: url("FalconHeavy.jpg") no-repeat center center fixed;
   background-size: cover;
+}
+
+button {
+  color: rgb(204, 0, 0);
+  font-family: teslaFont;
+  font-size: 20px;
+  font-variant-caps: all-small-caps;
+}
+
+.quote {
+  height: 50%;
+  width: 50%;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.musk {
+  content: url("MuskSmiling.png");
+  width: 25%;
+  height: auto;
+
+  position: absolute;
+  bottom: 0px;
+  left: 45%;
 }
