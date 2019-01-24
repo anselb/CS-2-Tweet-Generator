@@ -12,9 +12,9 @@ from flask import render_template
 app = Flask(__name__, template_folder='source/templates', static_folder ='source/static')
 
 # Code to make viewing changes easier (avoids caching)
-app.config['DEBUG'] = True
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+# app.config['DEBUG'] = True
+# app.config['TEMPLATES_AUTO_RELOAD'] = True
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
